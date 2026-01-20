@@ -5,6 +5,8 @@ tags:
   - installation
   - interactive
   - programming
+created: 2026-01-20T11:13:12-06:00
+modified: 2026-01-20T11:13:12-06:00
 ---
 
 ![Heartbeat](/images/heartbeat.png)

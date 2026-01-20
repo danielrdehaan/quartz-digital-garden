@@ -4,6 +4,8 @@ tags:
   - software
   - tools
   - founder
+created: 2026-01-20T11:13:12-06:00
+modified: 2026-01-20T11:13:12-06:00
 ---
 
 ![Simple Sound Tools](/images/simple-sound-tools.png)

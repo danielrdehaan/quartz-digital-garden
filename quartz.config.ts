@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "en-US",
     baseUrl: "danielrdehaan.github.io/quartz-digital-garden",
-    ignorePatterns: ["private", "templates", ".obsidian", "Attachments"],
+    ignorePatterns: ["private", "templates", ".obsidian", ".git", "Attachments"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
