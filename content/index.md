@@ -61,8 +61,4 @@ Platform for custom sound creation tools and workflow software
 
 *With the exception of the voiceover, Daniel designed all the sounds featured in these videos.*
 
-![T-Mobile: 5G&me Experience Center](https://www.youtube.com/watch?v=MQCBNxQQTYA)
-
-![Beam Suntory](https://www.youtube.com/watch?v=7ph4FDf8sl0)
-
-![Alex](https://www.youtube.com/watch?v=3ywDfcNqCo8)
+![T-Mobile: 5G&me Experience Center](https://www.youtube.com/watch?v=MQCBNxQQTYA) ![Beam Suntory](https://www.youtube.com/watch?v=7ph4FDf8sl0) ![Alex](https://www.youtube.com/watch?v=3ywDfcNqCo8)
