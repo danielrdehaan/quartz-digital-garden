@@ -66,14 +66,3 @@ Platform for custom sound creation tools and workflow software
 ![Beam Suntory](https://www.youtube.com/watch?v=7ph4FDf8sl0)
 
 ![Alex](https://www.youtube.com/watch?v=3ywDfcNqCo8)
-
----
-
-## Explore
-
-- [[About]]
-- [[Portfolio/index|Portfolio]]
-- [[CV]]
-- [[Free Audio Resources]]
-- [[Shared Knowledge/index|Knowledge Base]]
-- [[Courses/index|Courses]]
