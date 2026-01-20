@@ -1,14 +1,25 @@
 ---
-title: Welcome
-created: 2025-12-12T08:47:12-06:00
-modified: 2025-12-12T08:51:56-06:00
+title: Daniel Dehaan
 ---
-Welcome to my digital garden — a place where I share tutorials, resources, and notes for audio/sound design, game audio, and music production.
+
+# Daniel Dehaan
+
+Sound designer, composer, educator
+
+---
+
+## Featured Work
+
+- [[Portfolio/The-Last-Clockwinder|The Last Clockwinder]] — VR puzzle game sound design
+- [[Portfolio/T-Mobile-5Gme|T-Mobile 5G&me]] — Immersive experience center
+- [[Portfolio/Beam-Suntory|Beam Suntory]] — Interactive installation
+- [[Portfolio/Simple-Sound-Tools|Simple Sound Tools]] — Audio tools platform
 
 ## Explore
 
+- [[About]]
+- [[Portfolio/index|Portfolio]]
+- [[CV]]
 - [[Free Audio Resources]]
-- [[Shared Knowledge/index|Knowledge Database]]
+- [[Shared Knowledge/index|Knowledge Base]]
 - [[Courses/index|Courses]]
-
-
