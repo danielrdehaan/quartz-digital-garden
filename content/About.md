@@ -1,10 +1,10 @@
 ---
 title: About
 created: 2026-01-20T11:13:11-06:00
-modified: 2026-01-20T11:13:11-06:00
+modified: 2026-01-20T11:59:42-06:00
 ---
 
-![Daniel Dehaan](/images/headshot.png)
+![Daniel Dehaan](../images/headshot.png)
 
 # Daniel Dehaan
 
