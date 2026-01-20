@@ -59,7 +59,11 @@ Platform for custom sound creation tools and workflow software
 
 *With the exception of the voiceover, Daniel designed all the sounds featured in these videos.*
 
-> Note: Please provide the YouTube/Vimeo video URLs for your case study videos and I'll add them here.
+<iframe src="https://www.youtube.com/embed/MQCBNxQQTYA" title="Case Study 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe src="https://www.youtube.com/embed/7ph4FDf8sl0" title="Case Study 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe src="https://www.youtube.com/embed/3ywDfcNqCo8" title="Case Study 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
