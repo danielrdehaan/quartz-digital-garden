@@ -1,0 +1,15 @@
+---
+base: "[[Digital Garden/Free Audio Resources/_Index.base]]"
+URL: https://bedroomproducersblog.com/free-download/#analog-kicks
+Image: https://bedroomproducersblog.com/wp-content/uploads/2020/08/bpb-analog-kicks.jpg
+Date Added: 2022-12-19 22:05:00
+Tags:
+  - sample-pack
+  - drums
+🌟: false
+Last Edited: 2022-12-19 22:05:00
+---
+
+
+
+![](https://bedroomproducersblog.com/wp-content/uploads/2020/08/bpb-analog-kicks.jpg)
