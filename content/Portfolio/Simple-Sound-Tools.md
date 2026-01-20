@@ -6,6 +6,8 @@ tags:
   - founder
 ---
 
+![Simple Sound Tools](/images/simple-sound-tools.png)
+
 # Simple Sound Tools
 
 **Role**: Founder/Developer

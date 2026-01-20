@@ -12,8 +12,9 @@ a.internal {
   }
 }
 
-// Homepage-specific styles
-.page[data-slug="index"] {
+// Homepage and Portfolio page project card styling
+.page[data-slug="index"],
+.page[data-slug="Portfolio/index"] {
   // Hero tagline styling
   .center > article > p:first-of-type {
     font-size: 1.8rem;
@@ -29,19 +30,48 @@ a.internal {
     display: none;
   }
 
-  // Project list styling
-  .center > article ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  // Project card styling - image + title + description
+  .center > article {
+    // Project images - clickable thumbnails
+    p > a:has(img) {
+      display: block;
+      margin-bottom: 0.5rem;
 
-    li {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--lightgray);
+      img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 0;
+        transition: opacity 0.2s ease;
 
-      &:last-child {
-        border-bottom: none;
+        &:hover {
+          opacity: 0.85;
+        }
       }
+    }
+
+    // Project titles
+    h3 {
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    // Role text (bold)
+    h3 + p strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--darkgray);
+      margin-bottom: 0.25rem;
+    }
+
+    // Horizontal rules as section dividers
+    hr {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid var(--lightgray);
     }
   }
 
@@ -56,19 +86,45 @@ a.internal {
     margin-bottom: 1.5rem;
     border-bottom: none;
   }
+
+  // Project list styling (for Explore section)
+  .center > article ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--lightgray);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
 }
 
-// Portfolio page styles
-.page[data-slug="Portfolio/index"],
+// Individual portfolio project pages
 .page[data-slug^="Portfolio/"] {
-  .center > article h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-  }
+  .center > article {
+    // Hero image at top of project page
+    > p:first-of-type img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
 
-  .center > article h3 + p {
-    color: var(--gray);
-    margin-top: 0;
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    h3 + p {
+      color: var(--gray);
+      margin-top: 0;
+    }
   }
 }
 
@@ -116,7 +172,8 @@ footer {
 // Hide graph and backlinks on key pages for cleaner look
 .page[data-slug="index"],
 .page[data-slug="About"],
-.page[data-slug="CV"] {
+.page[data-slug="CV"],
+.page[data-slug="Portfolio/index"] {
   .sidebar.right {
     .graph,
     .backlinks {
@@ -158,5 +215,34 @@ footer {
 .search {
   & > button {
     border-radius: 4px;
+  }
+}
+
+// Case studies section - video embeds
+.page[data-slug="index"] {
+  .center > article {
+    // Style blockquotes as notes
+    blockquote {
+      background: var(--lightgray);
+      border-left: 3px solid var(--gray);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+
+      p {
+        margin: 0;
+        font-style: italic;
+        color: var(--darkgray);
+      }
+    }
+
+    // YouTube/video embeds
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
   }
 }

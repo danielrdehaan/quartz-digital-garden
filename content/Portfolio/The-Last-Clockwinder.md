@@ -6,13 +6,15 @@ tags:
   - games
 ---
 
+![The Last Clockwinder](/images/clockwinder.jpeg)
+
 # The Last Clockwinder
 
 **Role**: Sound Designer
 
 ## Project Overview
 
-Collaborated with composer Joel Corelitz on audio for Pontoco's VR puzzle game, covering both the original release and the hand-tracking update.
+Collaborated with composer Joel Corelitz on audio for Pontoco's award-winning VR puzzle game, covering both the original release and the hand-tracking update.
 
 *The Last Clockwinder* is a VR puzzle game where players create autonomous clones to tend to a giant clockwork tree. The game features a unique blend of automation mechanics and meditative gameplay.
 
@@ -20,7 +22,7 @@ Collaborated with composer Joel Corelitz on audio for Pontoco's VR puzzle game, 
 
 - Sound design for gameplay mechanics and environments
 - Audio implementation for VR interactions
-- Sound design for the hand-tracking update
+- Sound design for the hand-tracking update (2024)
 
 ## Credits
 

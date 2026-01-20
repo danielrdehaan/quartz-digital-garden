@@ -5,13 +5,15 @@ tags:
   - film
 ---
 
+![Blight](/images/blight.png)
+
 # Blight
 
 **Role**: Composer
 
 ## Project Overview
 
-Composed the original score for the short film *Blight*, directed by filmmaker Markus Hoeckner.
+Composed the original score for the short film *Blight*, directed by filmmaker Markus Hoeckner. Produced by Soulens, Minneapolis (2023).
 
 ## Responsibilities
 
@@ -22,6 +24,10 @@ Composed the original score for the short film *Blight*, directed by filmmaker M
 ## Director
 
 Markus Hoeckner
+
+## Production
+
+Soulens, Minneapolis
 
 ---
 

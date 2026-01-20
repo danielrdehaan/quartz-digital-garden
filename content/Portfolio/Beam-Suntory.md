@@ -6,6 +6,8 @@ tags:
   - interactive
 ---
 
+![Beam Suntory](/images/beam-suntory.png)
+
 # Beam Suntory
 
 **Role**: Sound/Music Designer

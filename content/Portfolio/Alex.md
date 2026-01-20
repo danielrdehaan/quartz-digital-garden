@@ -6,6 +6,8 @@ tags:
   - ui-audio
 ---
 
+![Alex](/images/alex.jpeg)
+
 # Alex
 
 **Role**: Sound/Music Designer

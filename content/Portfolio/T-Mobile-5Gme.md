@@ -6,6 +6,8 @@ tags:
   - interactive
 ---
 
+![T-Mobile 5G&me Experience Center](/images/tmobile.png)
+
 # T-Mobile: 5G&me Experience Center
 
 **Role**: Sound/Music Designer
