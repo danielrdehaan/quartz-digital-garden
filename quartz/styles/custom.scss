@@ -204,10 +204,20 @@ footer {
   }
 }
 
-// Explorer - cleaner styling
+// Explorer - cleaner styling with scroll fix
+.sidebar.left {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
 .explorer {
   h2 button {
     font-weight: 500;
+  }
+
+  .explorer-content {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
   }
 }
 
