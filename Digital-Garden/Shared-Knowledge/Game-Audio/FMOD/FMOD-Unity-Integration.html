@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>FMOD Unity Integration</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Inter:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Daniel Dehaan"/><meta property="og:title" content="FMOD Unity Integration"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="FMOD Unity Integration"/><meta name="twitter:description" content="FMOD: Unity Integration Created by Daniel Dehaan, 2021-09-26 Warning This document was written using FMOD Studio version 2.02.03 and Unity Editor version 2020.3.18f1 (Mac, Windows) Unity Project Setup Create a new 3D Unity (URL) project and name it “FMOD Playground” (e.g."/><meta property="og:description" content="FMOD: Unity Integration Created by Daniel Dehaan, 2021-09-26 Warning This document was written using FMOD Studio version 2.02.03 and Unity Editor version 2020.3.18f1 (Mac, Windows) Unity Project Setup Create a new 3D Unity (URL) project and name it “FMOD Playground” (e.g."/><meta property="og:image:alt" content="FMOD: Unity Integration Created by Daniel Dehaan, 2021-09-26 Warning This document was written using FMOD Studio version 2.02.03 and Unity Editor version 2020.3.18f1 (Mac, Windows) Unity Project Setup Create a new 3D Unity (URL) project and name it “FMOD Playground” (e.g."/><meta property="og:image" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta property="og:image:url" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta name="twitter:image" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="danielrdehaan.github.io/quartz-digital-garden"/><meta property="og:url" content="https://danielrdehaan.github.io/quartz-digital-garden/Digital-Garden/Shared-Knowledge/Game-Audio/FMOD/FMOD-Unity-Integration"/><meta property="twitter:url" content="https://danielrdehaan.github.io/quartz-digital-garden/Digital-Garden/Shared-Knowledge/Game-Audio/FMOD/FMOD-Unity-Integration"/><link rel="icon" href="../../../../static/icon.png"/><meta name="description" content="FMOD: Unity Integration Created by Daniel Dehaan, 2021-09-26 Warning This document was written using FMOD Studio version 2.02.03 and Unity Editor version 2020.3.18f1 (Mac, Windows) Unity Project Setup Create a new 3D Unity (URL) project and name it “FMOD Playground” (e.g."/><meta name="generator" content="Quartz"/><link href="../../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL2RhbmllbHJkZWhhYW4vcXVhcnR6LXdlYnNpdGUtZGFuaWVscmRlaGFhbi9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://danielrdehaan.github.io/quartz-digital-garden/index.xml"/></head><body data-slug="Digital-Garden/Shared-Knowledge/Game-Audio/FMOD/FMOD-Unity-Integration"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../../..">Daniel Dehaan</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-736"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-736" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/">Digital Garden</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/">Shared Knowledge</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/Game-Audio/">Game Audio</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/Game-Audio/FMOD/">FMOD</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>FMOD Unity Integration</a></div></nav><h1 class="article-title">FMOD Unity Integration</h1><p show-comma="true" class="content-meta"><time datetime="2026-01-20T02:57:51.546Z">Jan 19, 2026</time><span>8 min read</span></p><ul class="tags"><li><a href="../../../../tags/type/tutorial" class="internal tag-link">type/tutorial</a></li><li><a href="../../../../tags/topic/game-audio/fmod" class="internal tag-link">topic/game-audio/fmod</a></li><li><a href="../../../../tags/topic/game-audio/unity" class="internal tag-link">topic/game-audio/unity</a></li></ul></div></div><article class="popover-hint"><h1 id="fmod-unity-integration">FMOD: Unity Integration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fmod-unity-integration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Created by <a href="http://www.danielrdehaan.com" class="external">Daniel Dehaan<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, 2021-09-26</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>This document was written using <a href="https://fmod.com/download#" class="external">FMOD Studio version 2.02.03<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> and Unity Editor version 2020.3.18f1 (<a href="https://download.unity3d.com/download_unity/a7d1c678663c/UnityDownloadAssistant-2020.3.18f1.dmg?_ga=2.225998426.1115221175.1632095976-1002205724.1632095976" class="external">Mac<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, <a href="https://download.unity3d.com/download_unity/a7d1c678663c/UnityDownloadAssistant-2020.3.18f1.exe?_ga=2.225998426.1115221175.1632095976-1002205724.1632095976" class="external">Windows<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>)</p>
+</div>
+</blockquote>
+<h1 id="unity-project-setup">Unity Project Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unity-project-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<hr/>
+<ol>
+<li>
+<p>Create a new 3D Unity (URL) project and name it “FMOD Playground” (e.g. FA21_<em>MUSC-601_Week-04_DDehaan</em>).</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_7.44.58_PM.png" alt="Screen Shot 2021-09-26 at 7.44.58 PM.png"/></p>
+</li>
+<li>
+<p>Import the <a href="https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526" class="external">Starter Assets - Third Person Character Controller<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</p>
+<ol>
+<li>
+<p>After clicking the link above, click “Add to My Assets”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Screen_Shot_2021-09-19_at_5.39.31_PM.png" alt="Screen Shot 2021-09-19 at 5.39.31 PM.png"/></p>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<pre><code>2. Click &quot;Open in Unity&quot;.
+    
+    ![Screen Shot 2021-09-19 at 5.40.31 PM.png](Screen_Shot_2021-09-19_at_5.40.31_PM.png)
+    
+3. Make sure the Starter Assets - Third Person Character Controller package is selected and click import.
+    
+    ![Screen Shot 2021-09-19 at 5.45.13 PM.png](Screen_Shot_2021-09-19_at_5.45.13_PM.png)
+    
+4. If a second import window appears make sure all the assets are selected and click &quot;Import&quot;.
+    
+    ![Screen Shot 2021-09-19 at 6.08.13 PM.png](Screen_Shot_2021-09-19_at_6.08.13_PM.png)
+    
+</code></pre>
+<p>3. If you get a pop-up warning about this project using a new input system, click “Yes”.</p>
+<pre><code>![Screen Shot 2021-09-19 at 6.11.31 PM.png](Screen_Shot_2021-09-19_at_6.11.31_PM.png)
+</code></pre>
+<p>4. Once the import completes, and the Unity Editor has restarted, open the demo scene found in the <em>Project</em> window **by navigating to <em>Assets > StarterAssets > ThirdPersonController > Scenes</em> and double-click “Playground”.</p>
+<pre><code>![Screen Shot 2021-09-19 at 5.48.36 PM.png](Screen_Shot_2021-09-19_at_5.48.36_PM.png)
+</code></pre>
+<p>5. Save the current scene as “FMOD-Playground” in the <em>Assets > Scenes</em> folder by right-clicking on the top-level <em>Playground Scene</em> within the Project Hierarchy window and choosing <em>Save Scene As…</em></p>
+<pre><code>![Screen Shot 2021-09-26 at 7.46.15 PM.png](Screen_Shot_2021-09-26_at_7.46.15_PM.png)
+</code></pre>
+<p>6. Test the scene by clicking the play button near the top of the Unity Editor window.</p>
+<pre><code>![Screen Shot 2021-09-19 at 6.48.55 PM.png](Screen_Shot_2021-09-19_at_6.48.55_PM.png)
+
+> [!note]
+</code></pre>
+<blockquote>
+</blockquote>
+<h1 id="integrating-unity-with-an-fmod-project">Integrating Unity with an FMOD Project<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#integrating-unity-with-an-fmod-project" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ol>
+<li>
+<p>Go to <a href="https://fmod.com/download" class="external">FMOD.com/download<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> and download both “FMOD Studio” and “FMOD for Unity” version 2.02.03</p>
+</li>
+<li>
+<p>Install FMOD Studio and start a new project named “FA21_MUSC-601_Week-04_First Initial Last Name_FMOD-Project” (e.g. “FA21_MUSC-601_Week-04_DDehaan_FMOD-Project”).</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_7.52.46_PM.png" alt="Screen Shot 2021-09-26 at 7.52.46 PM.png"/></p>
+</li>
+<li>
+<p>Back in the Unity Editor, from the Menu Bar select Assets > Import > Custom Packages… and then select the FMOD for Unity file you just downloaded.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_7.59.24_PM.png" alt="Screen Shot 2021-09-26 at 7.59.24 PM.png"/></p>
+</li>
+<li>
+<p>Then click “Import”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.01.53_PM.png" alt="Screen Shot 2021-09-26 at 8.01.53 PM.png"/></p>
+</li>
+<li>
+<p>After the package has been successfully imported, a setup wizard will appear, click “Start.”</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.10.09_PM.png" alt="Screen Shot 2021-09-26 at 8.10.09 PM.png"/></p>
+</li>
+<li>
+<p>On the next screen confirm that “Reorganize Plugin Files” has a green checkmark next to it, then click to “Update Event References”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.28.41_PM.png" alt="Screen Shot 2021-09-26 at 8.28.41 PM.png"/></p>
+</li>
+<li>
+<p>On the screen that appear, click “Scan”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.30.12_PM.png" alt="Screen Shot 2021-09-26 at 8.30.12 PM.png"/></p>
+</li>
+<li>
+<p>Once the scan completes, you may close the “FMOD Event Reference Updater” window and click the “Next” button in the “FMOD Setup Wizard” window.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.31.40_PM.png" alt="Screen Shot 2021-09-26 at 8.31.40 PM.png"/></p>
+</li>
+<li>
+<p>On the next screen, click “FMOD Studio Project” then navigate to the FMOD Project you just created and click “Open”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.11.56_PM.png" alt="Screen Shot 2021-09-26 at 8.11.56 PM.png"/></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.12.27_PM.png" alt="Screen Shot 2021-09-26 at 8.12.27 PM.png"/></p>
+</li>
+<li>
+<p>Then click “Next”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.17.20_PM.png" alt="Screen Shot 2021-09-26 at 8.17.20 PM.png"/></p>
+</li>
+<li>
+<p>The next screen will prompt you to replace any native “Audio Listener” components with FMOD’s Audio Listener components. For now, just click “Next’. We will do this manually in just a moment.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.19.23_PM.png" alt="Screen Shot 2021-09-26 at 8.19.23 PM.png"/></p>
+</li>
+<li>
+<p>On the next screen, click the button to “Disable built in audio”. Then click “Next”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.21.46_PM.png" alt="Screen Shot 2021-09-26 at 8.21.46 PM.png"/></p>
+</li>
+<li>
+<p>On the next screen, confirm that no audio sources should have been found and click “Next”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.23.10_PM.png" alt="Screen Shot 2021-09-26 at 8.23.10 PM.png"/></p>
+</li>
+<li>
+<p>The final screen provides information about what you should do if you are working on a collaborative team that uses a system for managing changes to their shared files. We are not, so we can just click “Next”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.25.43_PM.png" alt="Screen Shot 2021-09-26 at 8.25.43 PM.png"/></p>
+</li>
+<li>
+<p>With everything but the Listener step completed, you may now close the FMOD Setup Wizard window.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.34.04_PM.png" alt="Screen Shot 2021-09-26 at 8.34.04 PM.png"/></p>
+</li>
+<li>
+<p>Lastly, we need to replace the native Audio Listener with the FMOD Studio Listener component. To do this, select the MainCamera game object in the Hierarchy window for the FMOD-Playground scene.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.39.18_PM.png" alt="Screen Shot 2021-09-26 at 8.39.18 PM.png"/></p>
+</li>
+<li>
+<p>Then, over in the inspector window, find and remove the “Audio Listener” component.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.40.20_PM.png" alt="Screen Shot 2021-09-26 at 8.40.20 PM.png"/></p>
+</li>
+<li>
+<p>Finally, add a new “FMOD Studio Listener” component to the MainCamera game object.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.41.28_PM.png" alt="Screen Shot 2021-09-26 at 8.41.28 PM.png"/></p>
+</li>
+<li>
+<p>That’s it! You have now successfully integrated Unity and FMOD.</p>
+</li>
+</ol>
+<h1 id="adding-background-music">Adding Background Music<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#adding-background-music" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ol>
+<li>
+<p>In your FMOD Project, create a new 2D Timeline Event and call it “Music_Background”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.46.45_PM.png" alt="Screen Shot 2021-09-26 at 8.46.45 PM.png"/></p>
+</li>
+<li>
+<p>Switch to the Assets tab and drag-and-drop your background music file into a new folder called “Music”.</p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Music_Elevator_by_Jay_You_Id-460432.wav.zip" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Music_Elevator_by_Jay_You_Id-460432.wav.zip">Music Elevator by Jay_You Id-460432.wav.zip</a></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.48.39_PM.png" alt="Screen Shot 2021-09-26 at 8.48.39 PM.png"/></p>
+</li>
+<li>
+<p>Then drag-and-drop that asset onto the Background_Music even you just created.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.50.47_PM.png" alt="Screen Shot 2021-09-26 at 8.50.47 PM.png"/></p>
+</li>
+<li>
+<p>Loop the full duration of the audio asset by right-clicking on the waveform and selecting “New Loop Region”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.51.48_PM.png" alt="Screen Shot 2021-09-26 at 8.51.48 PM.png"/></p>
+</li>
+<li>
+<p>Before this event and its associated assets become available to our Unity project, we have to first assign the event to a Bank, and build the FMOD resource that will be include in the Unity project. To do this, right-click on the “Background_Music” event and assign it to the “Master” bank.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.54.36_PM.png" alt="Screen Shot 2021-09-26 at 8.54.36 PM.png"/></p>
+</li>
+<li>
+<p>Then, from the Menu Bar, select File > Build All Platforms</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.55.23_PM.png" alt="Screen Shot 2021-09-26 at 8.55.23 PM.png"/></p>
+</li>
+<li>
+<p>Then save the FMOD project.</p>
+</li>
+<li>
+<p>Back in Unity, select FMOD in the Menu Bar and choose “Refresh Banks”.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_9.01.42_PM.png" alt="Screen Shot 2021-09-26 at 9.01.42 PM.png"/></p>
+</li>
+<li>
+<p>Next, add an empty game object to the FMOD-Playground scene and call it “Background_Music”.</p>
+</li>
+<li>
+<p>Select the new “Background_Music” game object and add an “FMOD Studio Event Emitter” component.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.59.11_PM.png" alt="Screen Shot 2021-09-26 at 8.59.11 PM.png"/></p>
+</li>
+<li>
+<p>In the new “FMOD Studio Event Emitter” comment set the</p>
+<ul>
+<li>Play Event = “Object Start”</li>
+<li>Stop Event = “Object Destroy”</li>
+<li>Event = “event:Background_Music”</li>
+</ul>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_9.02.44_PM.png" alt="Screen Shot 2021-09-26 at 9.02.44 PM.png"/></p>
+</li>
+<li>
+<p>Finally, click the “Play” button to test for your background music.</p>
+</li>
+</ol>
+<h1 id="adding-footsteps">Adding Footsteps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#adding-footsteps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<hr/>
+<ol>
+<li>
+<p>Navigate to <em>Assets > Standard Assets > ThirdPersonController > Character > Animations > Locamotion—Walk_N.anim</em></p>
+<p><img src="../../../../Adding_Footstesp_-_Step_1.gif" alt="Adding Footstesp - Step 1.gif"/></p>
+</li>
+<li>
+<p>Expand the <em>Events</em> section.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Footsteps_-_Step_2.gif" alt="Footsteps - Step 2.gif"/></p>
+</li>
+<li>
+<p>Move the <em>model</em> into a good position to see the feet.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Adjust_Model_View.gif" alt="Adjust Model View.gif"/></p>
+<ul>
+<li>Option/Alt + click + drag = turn camera</li>
+<li>Click+Drag = slide camera</li>
+<li>Option/Alt + mouse wheel up/down to zoom in/out</li>
+</ul>
+</li>
+<li>
+<p>Drag on Play Ruler (above model view) to find the first footfall and add a “Step” event by clicking the <em>Add Event</em> button.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Create_Step_Events.gif" alt="Create Step Events.gif"/></p>
+</li>
+<li>
+<p>Repeat the previous step for all footsteps.</p>
+</li>
+<li>
+<p>When a “Step” event has been added to all animated footsteps, click “Apply”.</p>
+<p><img src="../../../../Click_Apply.gif" alt="Click Apply.gif"/></p>
+</li>
+<li>
+<p>Select the <em>PlayerArmature</em> game object in the <em>Hierarchy</em> window, and, if one does not already exist, add an Audio Source component.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Add_Audio_Source.gif" alt="Add Audio Source.gif"/></p>
+</li>
+<li>
+<p>Add a new <em>Script Component</em> named “Audio_Trigger_Animation_Event_Step” to the <em>PlayerArmature</em> game object.</p>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<ol start="9">
+<li>
+<p>In the <em>Project</em> window, create a new <em>Scripts</em> folder inside the main <em>Assets</em> folder and move your new Animation_FMOD_Event_Trigger **inside of the new folder.</p>
+</li>
+<li>
+<p>Open new Script in Visual Studio.</p>
+</li>
+<li>
+<p>In Visual Studio edit the script so it matches the one shown below:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="csharp" data-theme="github-light github-dark"><code data-language="csharp" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> System</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Collections</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> System</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Collections</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Generic</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> UnityEngine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Animation_FMOD_Event_Trigger</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> : </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">MonoBehaviour</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    public</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> FMODUnity</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">EventReference</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> fmodEventStep</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    private</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Step</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        FMODUnity.RuntimeManager.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">PlayOneShot</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(fmodEventStep);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+</li>
+<li>
+<p>Save and close the script.</p>
+</li>
+<li>
+<p>Back in FMOD Studio, create a new 2D Action called “Player_Step” and assign it to the Master bank.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.14.16_PM.png" alt="Screen Shot 2021-09-26 at 10.14.16 PM.png"/></p>
+</li>
+<li>
+<p>In the Assets tab, drag-and-drop the footstep audio files into a new folder called “Footsteps” inside of another new folder called “Player”.</p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Footstep_Audio_Files.zip" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Footstep_Audio_Files.zip">Footstep Audio Files.zip</a></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.13.39_PM.png" alt="Screen Shot 2021-09-26 at 10.13.39 PM.png"/></p>
+</li>
+<li>
+<p>Then, back inside the new Player_Step event, right-click and add a new Multi Instrument.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.15.30_PM.png" alt="Screen Shot 2021-09-26 at 10.15.30 PM.png"/></p>
+</li>
+<li>
+<p>Next, drag-and-drop all the footstep assets inside the new Multi Instrument.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.16.50_PM.png" alt="Screen Shot 2021-09-26 at 10.16.50 PM.png"/></p>
+</li>
+<li>
+<p>Test the event in FMOD by clicking the play button a few times. You should hear a different footstep on each click of the play button.</p>
+</li>
+<li>
+<p>Before testing everything back in Unity, be sure to Build For All Platforms and save the FMOD project.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_8.55.23_PM-1.png" alt="Screen Shot 2021-09-26 at 8.55.23 PM.png"/></p>
+</li>
+<li>
+<p>Back in Unity, refresh the FMOD Banks.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_9.01.42_PM-1.png" alt="Screen Shot 2021-09-26 at 9.01.42 PM.png"/></p>
+</li>
+<li>
+<p>Return to the Animation_FMOD_Event script component in the inspector window and select the new Player_Step event for the FMOD Event Step parameter.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.25.59_PM.png" alt="Screen Shot 2021-09-26 at 10.25.59 PM.png"/></p>
+</li>
+<li>
+<p>Finally, play the game in Unity and see if you can hear the footsteps.</p>
+</li>
+</ol>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.30.03_PM.png" alt="Screen Shot 2021-09-26 at 10.30.03 PM.png"/></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_10.31.26_PM.png" alt="Screen Shot 2021-09-26 at 10.31.26 PM.png"/></p>
+</div>
+</blockquote>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+<h1 id="controlling-fmod-parameters">Controlling FMOD Parameters<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controlling-fmod-parameters" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<hr/>
+<p>FMOD Parameters could be controlled by almost anything in Unity, but to keep things simple we’ll setup some Box Triggers to trigger specific FMOD parameter values.</p>
+<p>Box Triggers are invisible game objects within the scene that are used to trigger events whenever a player moves through them.</p>
+<p>Let’s create a <em>box trigger</em> so that whenever our player walks through the short tunnel the background music fades out, and an owl “hoots” randomly for as long as the player remains inside the tunnel.</p>
+<ol>
+<li>
+<p>Begin by bringing the short <em>Tunnel_Prefab</em> game object into focus by</p>
+<ol>
+<li>Selecting it in the Hierarchy window under <em>Environment > Greybox > Tunnel_Prefab</em></li>
+<li>Then hover the cursor over the <em>Scene</em> window and pressing the ‘f’ key</li>
+</ol>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Focus_Tunnel_Prefab.gif" alt="Focus Tunnel Prefab.gif"/></p>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<ol start="2">
+<li>
+<p>Right click on the <em>Tunnel_Prefab</em> object in the <em>Hierarchy</em> window and create a new <em>3D Object > Cube</em> game object named “Box_Trigger”.</p>
+<p><img src="../../../../Add_Cube_to_Tunnel.gif" alt="Add Cube to Tunnel.gif"/></p>
+</li>
+<li>
+<p>With the new <em>Box_Trigger</em> object selected in the <em>Hierarchy</em> window, navigate to the <em>Inspector</em> widow and adjust all of the following parameters to…</p>
+<ul>
+<li>
+<p>Transform > Position x = 0, y = 0, z = 1.25</p>
+</li>
+<li>
+<p>Transform > Scale x = 2.5, y = 6, z = 2.5</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Screen_Shot_2021-09-19_at_10.41.27_PM.png" alt="Screen Shot 2021-09-19 at 10.41.27 PM.png"/></p>
+</li>
+<li>
+<p>Disable its <em>Mesh Renderer</em></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Screen_Shot_2021-09-19_at_10.41.43_PM.png" alt="Screen Shot 2021-09-19 at 10.41.43 PM.png"/></p>
+</li>
+<li>
+<p>And enable the *Box Collider’s ‘*Is Trigger’ option.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Unity-Basics-Working-with-Audio-9727-0a40/Screen_Shot_2021-09-19_at_10.42.53_PM.png" alt="Screen Shot 2021-09-19 at 10.42.53 PM.png"/></p>
+</li>
+</ul>
+</li>
+<li>
+<p>With the <em>Box_Trigger</em> game object still selected in the <em>Hierarchy</em> window, add a two “FMOD Studio Global Parameter Trigger” components. The first will set the Location parameter’s value to 1 when the player enters the box trigger. And the second will set the Location parameter’s value back to 0 when the player exits the box trigger.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/FMOD-Unity-Integration/Screen_Shot_2021-09-26_at_11.36.11_PM.png" alt="Screen Shot 2021-09-26 at 11.36.11 PM.png"/></p>
+</li>
+<li>
+<p>Now test to see the parameter’s value changes when the player moves in and out of the box trigger.</p>
+</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-231" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#fmod-unity-integration" data-for="fmod-unity-integration">FMOD: Unity Integration</a></li><li class="depth-0"><a href="#unity-project-setup" data-for="unity-project-setup">Unity Project Setup</a></li><li class="depth-0"><a href="#integrating-unity-with-an-fmod-project" data-for="integrating-unity-with-an-fmod-project">Integrating Unity with an FMOD Project</a></li><li class="depth-0"><a href="#adding-background-music" data-for="adding-background-music">Adding Background Music</a></li><li class="depth-0"><a href="#adding-footsteps" data-for="adding-footsteps">Adding Footsteps</a></li><li class="depth-0"><a href="#controlling-fmod-parameters" data-for="controlling-fmod-parameters">Controlling FMOD Parameters</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://www.linkedin.com/in/danielrdehaan">LinkedIn</a></li><li><a href="https://github.com/danielrdehaan">GitHub</a></li><li><a href="https://bsky.app/profile/danielrdehaan.com">BlueSky</a></li><li><a href="https://www.youtube.com/@DanielRDehaan">YouTube</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../../postscript.js" type="module" data-persist="true"></script></html>

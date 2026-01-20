@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Reaper 7 - My Setup Configuration</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Inter:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Daniel Dehaan"/><meta property="og:title" content="Reaper 7 - My Setup Configuration"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Reaper 7 - My Setup Configuration"/><meta name="twitter:description" content="Reaper 7 - My Setup/Configuration Note Table of Contents Installation Download latest version of Reaper Install as Portable Install Mac: Put REAPER.app inside a folder Create a blank plain text file named “reaper.ini” in the same folder."/><meta property="og:description" content="Reaper 7 - My Setup/Configuration Note Table of Contents Installation Download latest version of Reaper Install as Portable Install Mac: Put REAPER.app inside a folder Create a blank plain text file named “reaper.ini” in the same folder."/><meta property="og:image:alt" content="Reaper 7 - My Setup/Configuration Note Table of Contents Installation Download latest version of Reaper Install as Portable Install Mac: Put REAPER.app inside a folder Create a blank plain text file named “reaper.ini” in the same folder."/><meta property="og:image" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta property="og:image:url" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta name="twitter:image" content="https://danielrdehaan.github.io/quartz-digital-garden/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="danielrdehaan.github.io/quartz-digital-garden"/><meta property="og:url" content="https://danielrdehaan.github.io/quartz-digital-garden/Digital-Garden/Shared-Knowledge/DAW-Tools/Reaper/Reaper-7---My-Setup-Configuration"/><meta property="twitter:url" content="https://danielrdehaan.github.io/quartz-digital-garden/Digital-Garden/Shared-Knowledge/DAW-Tools/Reaper/Reaper-7---My-Setup-Configuration"/><link rel="icon" href="../../../../static/icon.png"/><meta name="description" content="Reaper 7 - My Setup/Configuration Note Table of Contents Installation Download latest version of Reaper Install as Portable Install Mac: Put REAPER.app inside a folder Create a blank plain text file named “reaper.ini” in the same folder."/><meta name="generator" content="Quartz"/><link href="../../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL2RhbmllbHJkZWhhYW4vcXVhcnR6LXdlYnNpdGUtZGFuaWVscmRlaGFhbi9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://danielrdehaan.github.io/quartz-digital-garden/index.xml"/></head><body data-slug="Digital-Garden/Shared-Knowledge/DAW-Tools/Reaper/Reaper-7---My-Setup-Configuration"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../../..">Daniel Dehaan</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-726"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-726" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/">Digital Garden</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/">Shared Knowledge</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/DAW-Tools/">DAW Tools</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../../Digital-Garden/Shared-Knowledge/DAW-Tools/Reaper/">Reaper</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Reaper 7   My Setup Configuration</a></div></nav><h1 class="article-title">Reaper 7 - My Setup Configuration</h1><p show-comma="true" class="content-meta"><time datetime="2026-01-20T02:57:51.610Z">Jan 19, 2026</time><span>10 min read</span></p><ul class="tags"><li><a href="../../../../tags/type/tutorial" class="internal tag-link">type/tutorial</a></li><li><a href="../../../../tags/topic/daw/ableton" class="internal tag-link">topic/daw/ableton</a></li><li><a href="../../../../tags/topic/daw/reaper" class="internal tag-link">topic/daw/reaper</a></li><li><a href="../../../../tags/topic/midi" class="internal tag-link">topic/midi</a></li></ul></div></div><article class="popover-hint"><h1 id="reaper-7---my-setupconfiguration">Reaper 7 - My Setup/Configuration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reaper-7---my-setupconfiguration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+<ul>
+<li><strong>Table of Contents</strong></li>
+</ul>
+<h1 id="installation">Installation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#installation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>Download latest version of Reaper</li>
+<li>Install as Portable Install
+<ul>
+<li>Mac:
+<ul>
+<li>Put REAPER.app inside a folder</li>
+<li>Create a blank plain text file named “reaper.ini” in the same folder. (Make sure that the file extension is “.ini” not “.txt”)</li>
+<li>Launch Reaper</li>
+</ul>
+</li>
+<li>Windows
+<ul>
+<li>Simply check the option for portable installation when running the Reaper installer.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="updates">Updates<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#updates" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>If you installed Reaper using the Portable Installation method described above, on all future updates you can simply replace the Reaper.app file inside the folder that has the application and other Reaper’s other files/folders.</p>
+<p>Before I install any major Reaper updates, I like to first Zip my Reaper folder and name it something like <code>Reaper Backup 2023-10-17</code> and stick it in a folder with my other Reaper archives. This way if there are any issues with the new version of Reaper I can easily go back to an older version.</p>
+<h1 id="sws-extension">SWS Extension<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sws-extension" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>Quit Reaper</li>
+<li>Download the <a href="https://www.sws-extension.org/" class="external">SWS Reaper Extension<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>Install SWS files. Remember that you did a portable install so all the SWS files that you install should go somewhere within the Folder that has your Reaper app.</li>
+<li>After you install everything find the <code>reaper_sws-x86_64.dylib</code> file inside your User Plugins folder and open it using Terminal. If you don’t do this, you operating system will mark this file as a security risk and Reaper wont be able to run it.</li>
+<li>Relaunch Reaper</li>
+</ul>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+<h1 id="reapack-manager">ReaPack Manager<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reapack-manager" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>Quit Reaper</li>
+<li>Download the <a href="https://reapack.com/" class="external">ReaPack Package Manger<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>Follow the installation instruction but be sure to install things inside your Reaper folder (like the SWS Extension).</li>
+<li>After you install everything find the <code>ReaPack x86_64.dylib</code> file inside your User Plugins folder and open it using Terminal. If you don’t do this, you operating system will mark this file as a security risk and Reaper wont be able to run it.</li>
+<li>Relaunch Reaper</li>
+</ul>
+<h1 id="shortcuts-assignments">Shortcuts Assignments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#shortcuts-assignments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h3 id="mouse-zooming--scrolling">Mouse Zooming &amp; Scrolling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mouse-zooming--scrolling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+<ul>
+<li>
+<p>Adjust Reaper Zoom/Scroll/Offset Preferences</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_14.26.53.png" alt="CleanShot 2023-10-17 at 14.26.53.png"/></p>
+</li>
+<li>
+<p>Adjust Mouse Navigation Actions</p>
+<ul>
+<li><code>HorizWheel</code> = View: Scroll horizontally reversed (MIDI CC relative/mousewheel)</li>
+<li><code>Mousewheel</code> = View: Scroll vertically (MIDI CC relative/mousewheel)</li>
+<li><code>Option+Mousewheel</code> = View: Zoom vertically (MIDI CC relative/mousewheel)</li>
+<li><code>Option+HorizWheel</code> = View: Zoom horizontally (MIDI CC relative/mousewheel)</li>
+<li><code>Option+Shift+Mousewheel</code> = View: Adjust selected track heights (MIDI CC relative/mousewheel)</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-shortcuts">Other Shortcuts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#other-shortcuts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>T</code> = SWS/BR: Move closest grid line to mouse cursor (perform until shortcut released)</li>
+<li><code>Command+Shift+T</code> = Insert virtual instrument on new track…</li>
+<li><code>Shift+Return</code> = Transport: Go to start of project</li>
+<li><code>C</code> = Options: Toggle metronome</li>
+<li><code>R</code> = Transport: Record</li>
+<li><code>Option+C</code> = Track: Set to custom color…</li>
+<li><code>F</code> = SWS/S&amp;M: Toggle show FX chain windows for selected tracks</li>
+<li><code>P</code> = View: Toggle show MIDI editor windows</li>
+<li><code>X</code> = View: Toggle mixer visible</li>
+<li><code>Option+M</code> = Markers: Insert and/or edit marker at current position</li>
+<li><code>Option+R</code> = Markers: Insert region from time selection and edit…</li>
+<li><code>M</code> = Item properties: Toggle items/tracks mute (depending on focus)</li>
+<li><code>S</code> = Track: Toggle solo for selected tracks</li>
+<li><code>I</code> = Item properties: Show media item/take properties</li>
+<li><code>Option+C</code> = SWS: Set selected track(s)/item(s) to custom color…</li>
+</ul>
+<h1 id="project-autosaves--backups">Project AutoSaves &amp; Backups<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-autosaves--backups" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>
+<p>Adjust saving keyboard shortcuts</p>
+<ul>
+<li><code>Command+Shift+S</code> = File: Save project as…</li>
+</ul>
+</li>
+<li>
+<p>Setup Backups and AutoSaves to happen every minute or whenever the project is saved manually and to save them to folder within the project directory named “Backups”</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_15.08.39.png" alt="CleanShot 2023-10-17 at 15.08.39.png"/></p>
+</li>
+</ul>
+<h1 id="mixer-setup">Mixer Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mixer-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>
+<p>Move Master Track to right side of mixer</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_15.10.212x.png" alt="CleanShot 2023-10-17 at 15.10.21@2x.png"/></p>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Note</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-19_at_10.53.00.png" alt="CleanShot 2023-10-19 at 10.53.00.png"/></p>
+</blockquote>
+<ul>
+<li>
+<p>Set Horizontal Mousehweel over mixer to scrolls tracks rather than arrange view in Reaper preferences.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_16.02.102x.png" alt="CleanShot 2023-10-17 at 16.02.10@2x.png"/></p>
+</li>
+</ul>
+<h1 id="quick-adder-2">Quick Adder 2<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-adder-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>Install Quick Adder 2 via ReaPack</li>
+<li><a href="https://forum.cockos.com/showthread.php?t=232928" class="external">https://forum.cockos.com/showthread.php?t=232928<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>For full Quick Adder 2 functionality, also install “js_reascriptapi” via ReaPack.</li>
+<li>Assign Keyboard Shortcut to lunch Quick Adder 2
+<ul>
+<li><code>=</code> = Script: neutronic_Quick Adder 2.lua</li>
+</ul>
+</li>
+</ul>
+<h1 id="custom-insert-new-instrument-track-and-audio-track-scripts">Custom Insert New Instrument Track and Audio Track Scripts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#custom-insert-new-instrument-track-and-audio-track-scripts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>With the help of ChatGPT I created two custom action that inserts a new tracks and configures their input, monitoring, and record arm settings to my desired defaults for either an audio track or a MIDI track. These scripts will first check to see if any folder tracks are selected and, if so, add one new track at the bottom of each selected folder. If not folder tacks are selected, it will just add a new track at the bottom of the track list.</p>
+<p>Here are the scripts:</p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Insert_Empty_Audio_Track.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Insert_Empty_Audio_Track.lua">DRD_Insert Empty Audio Track.lua</a></p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Insert_Empty_Instrument_Track.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Insert_Empty_Instrument_Track.lua">DRD_Insert Empty Instrument Track.lua</a></p>
+<p>To use these script:</p>
+<ol>
+<li>
+<p>Add each script to the Scripts folder inside your Reaper folder.</p>
+</li>
+<li>
+<p>In Reaper, Open the Actions window.</p>
+</li>
+<li>
+<p>Click “New action…”</p>
+</li>
+<li>
+<p>Select “Load ReaScript…”</p>
+</li>
+<li>
+<p>Open the “DRD_Insert Empty Instrument Track.lua” file.</p>
+</li>
+<li>
+<p>Repeat steps 3 and 4 and open the “DRD_Insert Empty Audio Track.lua” file.</p>
+</li>
+<li>
+<p>Assign a key command. I like <code>Command+Shift+T</code> for Inserting and Empty Instrument Track, and <code>Command+T</code> for inserting and empty Audio track.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_23.01.462x.png" alt="CleanShot 2023-10-17 at 23.01.46@2x.png"/></p>
+</li>
+<li>
+<p>I then also replaced the default “Insert virtual instrument on new track…” and “Insert new track” in both the “Empty TCP Context” and “Track control panel context” menus with these custom scripts.</p>
+<ul>
+<li>
+<p>You can find and customize this menu by navigating to Options > Customize menu/toolbars…</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-19_at_10.19.42.png" alt="CleanShot 2023-10-19 at 10.19.42.png"/></p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="plug-in-preferences">Plug-In Preferences<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#plug-in-preferences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Updated a couple of plug-in preferences, mainly so that if I have an FX window open, it will automatically show me the FX of whatever track I have selected and follow me if I change the selected track.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-18_at_09.29.09.png" alt="CleanShot 2023-10-18 at 09.29.09.png"/></p>
+<h1 id="grid-line-settings">Grid Line Settings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#grid-line-settings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>
+<p>Adjust grid lines to be clearer and to show over the top of items</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_21.56.222x.png" alt="CleanShot 2023-10-17 at 21.56.22@2x.png"/></p>
+</li>
+</ul>
+<h1 id="midi-editor">MIDI Editor<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#midi-editor" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="preferences">Preferences<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#preferences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-22_at_13.32.52.png" alt="CleanShot 2023-10-22 at 13.32.52.png"/></p>
+<h3 id="zooming-and-navigation---midi-editor-actions">Zooming and Navigation - MIDI Editor Actions:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zooming-and-navigation---midi-editor-actions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>HorizWheel</code> = View: Scroll horizontally reversed (MIDI relative/mousewheel)</li>
+<li><code>Mousewheel</code> = View: Scroll vertically (MIDI relative/mousewheel)</li>
+<li><code>Option+HorizWheel</code> = View: Zoom horizontally reversed (MIDI relative/mousewheel)</li>
+<li><code>Option+Mousewheel</code> = View: Zoom vertically (MIDI relative/mousewheel)</li>
+<li><code>Shift+Return</code> = View: Go to start of file</li>
+</ul>
+<h3 id="other-keyboard-shortcuts">Other Keyboard Shortcuts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#other-keyboard-shortcuts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>Up Arrow</code> = Edit: Move notes up one semitone
+<code>Shift+UpArrow</code> = Edit: Move notes up one octave</li>
+<li><code>DownArrow</code> = Edit: Move notes down one semitone</li>
+<li><code>Shift+DownArrow</code> = Edit: Move notes down one octave</li>
+</ul>
+<h3 id="piano-roll-settings">Piano Roll Settings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#piano-roll-settings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>Adjust how notes are shown in the piano roll</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-18_at_10.20.09.png" alt="CleanShot 2023-10-18 at 10.20.09.png"/></p>
+</li>
+<li>
+<p>Switch to a custom Color Map for note coloring. I like the “Deluxe more contrast” by ReaperTips! You can download the ReaperTips color maps and find installation instructions on the <a href="https://www.reapertips.com/freebies/midi-colormaps" class="external">ReaperTips website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</p>
+</li>
+</ul>
+<h3 id="midi-editor-mouse-modifiers">MIDI Editor Mouse Modifiers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#midi-editor-mouse-modifiers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The mouse modifiers for the MIDI editor and MIDI notes where not working the way my brain wanted them to, so I went through and pretty much turned off all the defaults (while making a mental note of what was possible) and just turned on a few basics that I need to get started.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-22_at_10.29.35.png" alt="CleanShot 2023-10-22 at 10.29.35.png"/></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-22_at_10.30.08.png" alt="CleanShot 2023-10-22 at 10.30.08.png"/></p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-22_at_10.31.49.png" alt="CleanShot 2023-10-22 at 10.31.49.png"/></p>
+<h2 id="midi-editor-custom-scripts">MIDI Editor Custom Scripts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#midi-editor-custom-scripts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="set-midi-editor-grid-via-custom-command"><strong>Set MIDI Editor Grid via custom command</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#set-midi-editor-grid-via-custom-command" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Here is a custom script I wrote that prompts the user to enter any fraction (e.g. “1/4”, “1/16”, “1/1”, “1/7”) that they want the MIDI editor’s grid to be set to.</p>
+<p><strong>Here is the script:</strong></p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_MIDI_Editor_-_Set_MIDI_Editor_Grid.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_MIDI_Editor_-_Set_MIDI_Editor_Grid.lua">DRD_MIDI Editor - Set MIDI Editor Grid.lua</a></p>
+<p>To use these script:</p>
+<ol>
+<li>Add the script to the Scripts folder inside your Reaper folder.</li>
+<li>In Reaper, Open the Actions window. And make sure that “MIDI Editor” is set as the “Section” in the top right corner of the Actions window.</li>
+<li>Click “New action…”</li>
+<li>Select “Load ReaScript…”</li>
+<li>Open the “DRD_MIDI Editor - Set MIDI Editor Grid.lua” file.</li>
+<li>Assign a key command. I like <code>Option+Shift+G</code></li>
+</ol>
+<h3 id="midi-cc-lane-controller-script">MIDI CC Lane Controller Script<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#midi-cc-lane-controller-script" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>This script allows me to control what CC lane is visible in the MIDI editor via a popup dialogue box that appears when the script is run.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-24_at_15.55.56.png" alt="CleanShot 2023-10-24 at 15.55.56.png"/></p>
+<p><strong>Using the script:</strong></p>
+<ul>
+<li>Entering a value between 0 and 119 displays that CC lane in the MIDI Editor</li>
+<li>Entering the text “show”, “show all”, or “s” shows all the CC lanes that contain data</li>
+<li>Entering the text “hide”, “hide all”, or “h” hides all the CC lanes</li>
+<li>Some specific CC can also be shown by entering their name. The list includes:
+<ul>
+<li>CC1: “mod” or “modulation”</li>
+<li>CC7: “vol” or “volume”</li>
+<li>CC11: “expression” or “x”</li>
+<li>CC64: “sustain”, “sustain pedal”, “hold”, or “hold pedal”</li>
+</ul>
+</li>
+<li>Other MIDI Data Lanes can also be shown…
+<ul>
+<li>Velocity: “v”, “vel” or “velocity”</li>
+<li>Pitchbend: “pitch” or “pitchbend”</li>
+<li>Program Change: “program” or “program change”</li>
+<li>Channel Pressure: “channel pressure” or “aftertouch”</li>
+<li>Bank/Program Select: “bank/program select”</li>
+<li>Text Events: “text events”</li>
+<li>Sysex: “sysex”</li>
+</ul>
+</li>
+</ul>
+<p><strong>Here is the script:</strong></p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_MIDI_Editor_-_Show_Specific_MIDI_Event_Lane.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_MIDI_Editor_-_Show_Specific_MIDI_Event_Lane.lua">DRD_MIDI Editor - Show Specific MIDI Event Lane.lua</a></p>
+<p>To use these script:</p>
+<ol>
+<li>Add the script to the Scripts folder inside your Reaper folder.</li>
+<li>In Reaper, Open the Actions window. And make sure that “MIDI Editor” is set as the “Section” in the top right corner of the Actions window.</li>
+<li>Click “New action…”</li>
+<li>Select “Load ReaScript…”</li>
+<li>Open the “DRD_MIDI Editor - Show Specific MIDI Event Lane.lua” file.</li>
+<li>Assign a key command. I like <code>Shift+L</code></li>
+</ol>
+<h2 id="split-midi-notes">Split MIDI Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#split-midi-notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/JgG2La47Vhg"></iframe></p>
+<h2 id="split-chords-to-new-tracks">Split Chords to New Tracks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#split-chords-to-new-tracks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/erNgr1JoNBM"></iframe></p>
+<p><strong>Here is the script:</strong></p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Set_MIDI_Channel_of_Selected_Events.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Set_MIDI_Channel_of_Selected_Events.lua">DRD_Set MIDI Channel of Selected Events.lua</a></p>
+<p>To use these script:</p>
+<ol>
+<li>Add the script to the Scripts folder inside your Reaper folder.</li>
+<li>In Reaper, Open the Actions window. And make sure that “MIDI Editor” is set as the “Section” in the top right corner of the Actions window.</li>
+<li>Click “New action…”</li>
+<li>Select “Load ReaScript…”</li>
+<li>Open the “DRD_Set MIDI Channel of Selected Events.lua” file.</li>
+<li>Assign a key command. I like <code>Control+c</code></li>
+</ol>
+<h1 id="miscellaneous">Miscellaneous<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#miscellaneous" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="mouse-modifiers">Mouse Modifiers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mouse-modifiers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>Double-Clicking Media Item Edge toggles item’s looping property.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-18_at_10.43.25.png" alt="CleanShot 2023-10-18 at 10.43.25.png"/></p>
+</li>
+</ul>
+<h2 id="retroactive-midi-record">Retroactive MIDI Record<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#retroactive-midi-record" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>Shift-R</code> = MIDI: Insert recent retroactively recorded MIDI for armed and selected tracks
+<ul>
+<li>I’ll probably come back and write my own script for this at some point. Right now it replaces any existing Items, and I’d like the option to merge or create a new take.</li>
+</ul>
+</li>
+</ul>
+<h2 id="begin-playback-from-selected-media-items">Begin Playback From Selected Media Item(s)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#begin-playback-from-selected-media-items" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>Had to write a custom script for this one. Here it is:</p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Begin_Playback_from_Selected_Item(s).lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Begin_Playback_from_Selected_Item(s).lua">DRD_Begin Playback from Selected Item(s).lua</a></p>
+<p>To use this script:</p>
+<ol>
+<li>
+<p>Add it to the Script folder inside your Reaper folder</p>
+</li>
+<li>
+<p>In Reaper, Open the Actions window.</p>
+</li>
+<li>
+<p>Click “New action…”</p>
+</li>
+<li>
+<p>Select “Load ReaScript…”</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_23.01.462x.png" alt="CleanShot 2023-10-17 at 23.01.46@2x.png"/></p>
+</li>
+<li>
+<p>Open the “DRD_Begin Playback from Selected Item(s).lua” file.</p>
+</li>
+<li>
+<p>Assign a key command. I like <code>Control+Spacebar</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="saving-track-templates">Saving Track Templates<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#saving-track-templates" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="../../../../Custom_Script_for_Reaper_-_Naming_and_Saving_Track_Templates.mov" class="internal alias" data-slug="Custom_Script_for_Reaper_-_Naming_and_Saving_Track_Templates.mov">Custom Script for Reaper - Naming and Saving Track Templates.mov</a></p>
+<ul>
+<li>
+<p>Here is the custom script:</p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Reverse_elements_of_select_track_name_-_copy_to_clipboard_-_then_prompt_to_save_select_track_as_track_template.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Reverse_elements_of_select_track_name_-_copy_to_clipboard_-_then_prompt_to_save_select_track_as_track_template.lua">DRD_Reverse elements of select track name - copy to clipboard - then prompt to save select track as track template.lua</a></p>
+<p>To use this script:</p>
+<ol>
+<li>
+<p>Add it to the Script folder inside your Reaper folder</p>
+</li>
+<li>
+<p>In Reaper, Open the Actions window.</p>
+</li>
+<li>
+<p>Click “New action…”</p>
+</li>
+<li>
+<p>Select “Load ReaScript…”</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-17_at_23.01.462x.png" alt="CleanShot 2023-10-17 at 23.01.46@2x.png"/></p>
+</li>
+<li>
+<p>Open the “DRD_Reverse elements of select track name - copy to clipboard - then prompt to save select track as track template.lua” file.</p>
+</li>
+<li>
+<p>Assign a key command. I like <code>option+control+s</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="add-selected-tracks-to-new-folder-track">Add selected Tracks to new Folder Track<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#add-selected-tracks-to-new-folder-track" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>Command+G</code> = Track: Move tracks to new folder</li>
+</ul>
+<p>Like working in Ableton, pressing <code>Command+G</code> takes the selected tracks and places them inside a new folder track. Great for staying organized or setting up submixes/STEMS.</p>
+<h2 id="dont-show-full-size-track-control-panel-on-armed-tracks">Don’t show full size track control panel on armed tracks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dont-show-full-size-track-control-panel-on-armed-tracks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This gets annoying to me when I working with lots of tracks. I prefer to leave the track height at whatever it currently is and then use my shortcut of <code>option+shift+mousewheel</code> to adjust the individual track height if I want to.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-19_at_08.22.05.png" alt="CleanShot 2023-10-19 at 08.22.05.png"/></p>
+<h2 id="smart-duplicate">Smart Duplicate<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#smart-duplicate" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/6_7yNJDrz2U"></iframe></p>
+<h2 id="select-track-by-track-number">Select Track by Track Number<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#select-track-by-track-number" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A custom script that prompts the user for a track number and then selected that track. I’ve assigned it to the keyboard shortcut <code>Control+Tab</code></p>
+<p><a href="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Select_Track_by_Index_Number.lua" class="internal alias" data-slug="Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/DRD_Select_Track_by_Index_Number.lua">DRD_Select Track by Index Number.lua</a></p>
+<h2 id="playback-seeking-preferences">Playback Seeking Preferences<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#playback-seeking-preferences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>I like to be able to click around during playback and change the loop/time selection without having Reaper jump to where I just clicked - essentially separating the Edit Cursor and time selection from the Playback position.</p>
+<p><img src="../../../../Digital-Garden/Shared-Knowledge/Attachments/Reaper-7---My-Setup-Configuration/CleanShot_2023-10-25_at_10.48.24.png" alt="CleanShot 2023-10-25 at 10.48.24.png"/></p>
+<h1 id="reaper-stem-manager">Reaper STEM Manager<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reaper-stem-manager" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>I haven’t implemented this one yet, but looks really useful!</p>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/2cvF0tmuV1A"></iframe></p>
+<h1 id="slipview---full-waveform-previews-in-the-timeline">SlipView - Full waveform previews in the timeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#slipview---full-waveform-previews-in-the-timeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/BTA4RWbS-yc"></iframe></p>
+<p><a href="https://leonbeilmann.gumroad.com/l/SlipView" class="external">Reaper: SlipView - Full waveform previews in the timeline<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="time-based-effects-calculator">Time-Based Effects Calculator<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#time-based-effects-calculator" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="https://floopreaperscript.gumroad.com/l/awczd" class="external">Useless Time-based Effects Calculator – BPM-Based Timing Tool for REAPER<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h1 id="dialogue-editing">Dialogue Editing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dialogue-editing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><a href="https://www.amnesiasound.ca/post/dialog-editing-workflow" class="external">Dialog Editing Workflow<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<p><a href="https://ekscripts.gumroad.com/l/ai-11-labs-speech2text" class="external">ElevenLabs Speech‐to‐Text Translator for REAPER<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-225" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#reaper-7---my-setupconfiguration" data-for="reaper-7---my-setupconfiguration">Reaper 7 - My Setup/Configuration</a></li><li class="depth-0"><a href="#installation" data-for="installation">Installation</a></li><li class="depth-0"><a href="#updates" data-for="updates">Updates</a></li><li class="depth-0"><a href="#sws-extension" data-for="sws-extension">SWS Extension</a></li><li class="depth-0"><a href="#reapack-manager" data-for="reapack-manager">ReaPack Manager</a></li><li class="depth-0"><a href="#shortcuts-assignments" data-for="shortcuts-assignments">Shortcuts Assignments</a></li><li class="depth-2"><a href="#mouse-zooming--scrolling" data-for="mouse-zooming--scrolling">Mouse Zooming &amp; Scrolling</a></li><li class="depth-1"><a href="#other-shortcuts" data-for="other-shortcuts">Other Shortcuts</a></li><li class="depth-0"><a href="#project-autosaves--backups" data-for="project-autosaves--backups">Project AutoSaves &amp; Backups</a></li><li class="depth-0"><a href="#mixer-setup" data-for="mixer-setup">Mixer Setup</a></li><li class="depth-0"><a href="#quick-adder-2" data-for="quick-adder-2">Quick Adder 2</a></li><li class="depth-0"><a href="#custom-insert-new-instrument-track-and-audio-track-scripts" data-for="custom-insert-new-instrument-track-and-audio-track-scripts">Custom Insert New Instrument Track and Audio Track Scripts</a></li><li class="depth-0"><a href="#plug-in-preferences" data-for="plug-in-preferences">Plug-In Preferences</a></li><li class="depth-0"><a href="#grid-line-settings" data-for="grid-line-settings">Grid Line Settings</a></li><li class="depth-0"><a href="#midi-editor" data-for="midi-editor">MIDI Editor</a></li><li class="depth-1"><a href="#preferences" data-for="preferences">Preferences</a></li><li class="depth-2"><a href="#zooming-and-navigation---midi-editor-actions" data-for="zooming-and-navigation---midi-editor-actions">Zooming and Navigation - MIDI Editor Actions:</a></li><li class="depth-2"><a href="#other-keyboard-shortcuts" data-for="other-keyboard-shortcuts">Other Keyboard Shortcuts</a></li><li class="depth-2"><a href="#piano-roll-settings" data-for="piano-roll-settings">Piano Roll Settings</a></li><li class="depth-2"><a href="#midi-editor-mouse-modifiers" data-for="midi-editor-mouse-modifiers">MIDI Editor Mouse Modifiers</a></li><li class="depth-1"><a href="#midi-editor-custom-scripts" data-for="midi-editor-custom-scripts">MIDI Editor Custom Scripts</a></li><li class="depth-2"><a href="#set-midi-editor-grid-via-custom-command" data-for="set-midi-editor-grid-via-custom-command">Set MIDI Editor Grid via custom command</a></li><li class="depth-2"><a href="#midi-cc-lane-controller-script" data-for="midi-cc-lane-controller-script">MIDI CC Lane Controller Script</a></li><li class="depth-1"><a href="#split-midi-notes" data-for="split-midi-notes">Split MIDI Notes</a></li><li class="depth-1"><a href="#split-chords-to-new-tracks" data-for="split-chords-to-new-tracks">Split Chords to New Tracks</a></li><li class="depth-0"><a href="#miscellaneous" data-for="miscellaneous">Miscellaneous</a></li><li class="depth-1"><a href="#mouse-modifiers" data-for="mouse-modifiers">Mouse Modifiers</a></li><li class="depth-1"><a href="#retroactive-midi-record" data-for="retroactive-midi-record">Retroactive MIDI Record</a></li><li class="depth-1"><a href="#begin-playback-from-selected-media-items" data-for="begin-playback-from-selected-media-items">Begin Playback From Selected Media Item(s)</a></li><li class="depth-1"><a href="#saving-track-templates" data-for="saving-track-templates">Saving Track Templates</a></li><li class="depth-1"><a href="#add-selected-tracks-to-new-folder-track" data-for="add-selected-tracks-to-new-folder-track">Add selected Tracks to new Folder Track</a></li><li class="depth-1"><a href="#dont-show-full-size-track-control-panel-on-armed-tracks" data-for="dont-show-full-size-track-control-panel-on-armed-tracks">Don’t show full size track control panel on armed tracks</a></li><li class="depth-1"><a href="#smart-duplicate" data-for="smart-duplicate">Smart Duplicate</a></li><li class="depth-1"><a href="#select-track-by-track-number" data-for="select-track-by-track-number">Select Track by Track Number</a></li><li class="depth-1"><a href="#playback-seeking-preferences" data-for="playback-seeking-preferences">Playback Seeking Preferences</a></li><li class="depth-0"><a href="#reaper-stem-manager" data-for="reaper-stem-manager">Reaper STEM Manager</a></li><li class="depth-0"><a href="#slipview---full-waveform-previews-in-the-timeline" data-for="slipview---full-waveform-previews-in-the-timeline">SlipView - Full waveform previews in the timeline</a></li><li class="depth-1"><a href="#time-based-effects-calculator" data-for="time-based-effects-calculator">Time-Based Effects Calculator</a></li><li class="depth-0"><a href="#dialogue-editing" data-for="dialogue-editing">Dialogue Editing</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://www.linkedin.com/in/danielrdehaan">LinkedIn</a></li><li><a href="https://github.com/danielrdehaan">GitHub</a></li><li><a href="https://bsky.app/profile/danielrdehaan.com">BlueSky</a></li><li><a href="https://www.youtube.com/@DanielRDehaan">YouTube</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../../postscript.js" type="module" data-persist="true"></script></html>
