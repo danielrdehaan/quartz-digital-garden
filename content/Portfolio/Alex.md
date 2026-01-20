@@ -8,7 +8,7 @@ created: 2026-01-20T11:13:12-06:00
 modified: 2026-01-20T11:13:12-06:00
 ---
 
-![Alex](/images/alex.jpeg)
+![Alex](../images/alex.jpeg)
 
 # Alex
 
