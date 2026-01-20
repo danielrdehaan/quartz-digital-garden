@@ -16,6 +16,10 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
+// Helper to check if page is a "portfolio" page (homepage, about, cv)
+const isPortfolioPage = (slug: string) =>
+  slug === "index" || slug === "About" || slug === "CV"
+
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
@@ -23,9 +27,18 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
+    Component.ConditionalRender({
+      component: Component.ArticleTitle(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) => !isPortfolioPage(page.fileData.slug as string),
+    }),
+    Component.ConditionalRender({
+      component: Component.TagList(),
+      condition: (page) => !isPortfolioPage(page.fileData.slug as string),
+    }),
   ],
   left: [
     Component.PageTitle(),
@@ -43,9 +56,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    Component.Graph(),
+    Component.ConditionalRender({
+      component: Component.Graph(),
+      condition: (page) => !isPortfolioPage(page.fileData.slug as string),
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
+    Component.ConditionalRender({
+      component: Component.Backlinks(),
+      condition: (page) => !isPortfolioPage(page.fileData.slug as string),
+    }),
   ],
 }
 

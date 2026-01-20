@@ -25,6 +25,9 @@ Audio and music for Jellyvision's employee benefits onboarding system.
 ### [[Portfolio/Heartbeat|Heartbeat]]
 Custom audio software and music for an interactive installation by Humancraft.
 
+### [[Portfolio/Blight|Blight]]
+Original score for a short film directed by Markus Hoeckner.
+
 ### [[Portfolio/Simple-Sound-Tools|Simple Sound Tools]]
 Founder of a platform sharing custom sound creation tools and workflow software.
 

@@ -1,3 +1,162 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Minimal portfolio-style customizations
+
+// Remove wiki-link background highlighting for cleaner look
+a.internal {
+  background-color: transparent !important;
+  padding: 0 !important;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Homepage-specific styles
+.page[data-slug="index"] {
+  // Hero tagline styling
+  .center > article > p:first-of-type {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 3rem;
+    color: var(--dark);
+  }
+
+  // Hide article title on homepage (it's redundant with page title)
+  .page-header .article-title {
+    display: none;
+  }
+
+  // Project list styling
+  .center > article ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--lightgray);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // Section headers
+  .center > article h2 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: none;
+  }
+}
+
+// Portfolio page styles
+.page[data-slug="Portfolio/index"],
+.page[data-slug^="Portfolio/"] {
+  .center > article h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .center > article h3 + p {
+    color: var(--gray);
+    margin-top: 0;
+  }
+}
+
+// Cleaner page title
+.page-title {
+  font-weight: 500 !important;
+}
+
+// Footer styling - more minimal
+footer {
+  margin-top: 4rem !important;
+  padding-top: 2rem;
+  border-top: 1px solid var(--lightgray);
+
+  ul {
+    gap: 2rem !important;
+  }
+
+  a {
+    font-weight: 400 !important;
+    font-size: 0.9rem;
+  }
+}
+
+// About page - headshot styling
+.page[data-slug="About"] {
+  .center > article > p:first-of-type img {
+    max-width: 200px;
+    border-radius: 50%;
+    float: right;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// Breadcrumbs - more subtle
+.breadcrumb-container {
+  font-size: 0.85rem;
+
+  .breadcrumb-element {
+    color: var(--gray);
+  }
+}
+
+// Hide graph and backlinks on key pages for cleaner look
+.page[data-slug="index"],
+.page[data-slug="About"],
+.page[data-slug="CV"] {
+  .sidebar.right {
+    .graph,
+    .backlinks {
+      display: none;
+    }
+  }
+}
+
+// Content meta - more subtle
+.content-meta {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+// Tag list - minimal styling
+.tags {
+  margin-top: 2rem;
+
+  .tag-link {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--lightgray) !important;
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--gray) !important;
+    }
+  }
+}
+
+// Explorer - cleaner styling
+.explorer {
+  h2 button {
+    font-weight: 500;
+  }
+}
+
+// Search - more minimal
+.search {
+  & > button {
+    border-radius: 4px;
+  }
+}
